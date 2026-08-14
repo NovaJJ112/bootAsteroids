@@ -1,4 +1,5 @@
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from player import Player
 from logger import log_state
 import pygame
 
@@ -7,6 +8,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0.0
+    player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
     while True:
         log_state()
         for event in pygame.event.get():
@@ -14,6 +16,7 @@ def main():
                 return
         dt = clock.tick(60) / 1000
         screen.fill("black")
+        player.draw(screen)
         pygame.display.flip()
 
 if __name__ == "__main__":
